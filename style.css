@@ -1,0 +1,54 @@
+.container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 15px 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+.textarea {
+  margin-bottom: 15px;
+
+  resize: none;
+  width: 100%;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+
+  text-transform: uppercase;
+ 
+  background-color: #102338;
+}
+
+.button {
+  color: white;
+  min-width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.075);
+   cursor: pointer;
+   border: none;
+   margin: 2px;
+
+   border: 1px solid #089FFF;
+   transition: 0.4s;
+   
+}
+
+.button:hover {
+  background-color: rgba(187, 198, 233, 0.726);
+}
+
+.capslock-on {
+  text-transform: uppercase;
+}
+
+
+
+.button.highlighted {
+  border: 1px solid red;
+}

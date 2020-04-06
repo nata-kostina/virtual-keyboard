@@ -1,7 +1,7 @@
 const row_one_additional = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', ''];
 
 const row_one = [{ key: '`', name: 'Backquote', type: 'control' },
-{ key: '1', name: 'Digit1', type: 'letter' },
+{ key: '1', name: 'Digit1', type: 'digit' },
 { key: '2', name: 'Digit2', type: 'letter' },
 { key: '3', name: 'Digit3', type: 'letter' },
 { key: '4', name: 'Digit4', type: 'letter' },
@@ -60,25 +60,29 @@ const row_four =
   { key: ',', name: 'Comma', type: 'letter' },
   { key: '.', name: 'Period', type: 'letter' },
   { key: '/', name: 'Slash', type: 'letter' },
-  { key: 'Arr', name: 'ArrowUp', type: 'control' },
+  { key: '&#9650;', name: 'ArrowUp', type: 'control' },
   { key: 'Shift', name: 'ShiftRight', type: 'control' }
   ];
 
 const row_five = [{ key: 'Ctrl', name: 'ControlLeft', type: 'control' },
 { key: 'Win', name: 'MetaLeft', type: 'control' },
 { key: 'Alt', name: 'AltLeft', type: 'control' },
-{ key: 'Space', name: 'Space', type: 'control' },
+{ key: '', name: 'Space', type: 'control' },
 { key: 'Alt', name: 'AltRight', type: 'control' },
 { key: 'Ctrl', name: 'ControlRight', type: 'control' },
-{ key: 'Arr', name: 'ArrowLeft', type: 'control' },
-{ key: 'Arr', name: 'ArrowDown', type: 'control' },
-{ key: 'Arr', name: 'ArrowRight', type: 'control' },
+{ key: '&#9668;', name: 'ArrowLeft', type: 'control' },
+{ key: '&#9660;', name: 'ArrowDown', type: 'control' },
+{ key: '&#9658;', name: 'ArrowRight', type: 'control' },
 ];
 
+const status = { capslock: false, shift: false };
+
+// Create Container
 const container = document.createElement('div');
 container.className = 'container';
 document.body.append(container);
 
+// Create Title
 const title = document.createElement('div');
 title.className = 'title';
 title.innerHTML = 'RSS Виртуальная клавиатура';
@@ -89,12 +93,18 @@ const textarea = document.createElement('textarea');
 textarea.className = 'textarea';
 textarea.setAttribute('rows', '10');
 textarea.setAttribute('cols', '80');
-
-//textarea.setAttribute('readonly', 'readonly');
 container.append(textarea);
+textarea.focus();
+textarea.onkeydown = () => false;
+//document.addEventListener('keydown', (evt) => {
+// evt.preventDefault();
+//});
+//textarea.onblur = function () {
+//textarea.focus();
+//}
 
 // Create Keyboard
-const keyboard = document.createElement('keyboard');
+const keyboard = document.createElement('div');
 keyboard.className = 'keyboard';
 container.append(keyboard);
 
@@ -109,6 +119,7 @@ function buildRow(row, n) {
     key.classList.add(`${row[i].name}`);
     key.classList.add(`${row[i].type}`);
     key.innerHTML = row[i].key;
+    key.setAttribute('type', 'button');
     rowDiv.append(key);
   }
   keyboard.append(rowDiv);
@@ -120,24 +131,33 @@ buildRow(row_three, 3);
 buildRow(row_four, 4);
 buildRow(row_five, 5);
 
-textarea.focus();
-
-textarea.onblur = function () {
-  textarea.focus();
-}
+// Create Keyboard
+const info = document.createElement('div');
+info.className = 'info';
+container.append(info);
+info.innerHTML='Windows 10';
 
 // Cursor Handler
 
-function handleCursor() {
-  let cursorPosition = textarea.selectionStart;
-  textarea.selectionStart = cursorPosition - 1;
-  textarea.selectionEnd =textarea.selectionStart;
+/*function handleCursor(event) {
+  switch (event) {
+    case 'click': if (textarea.value.length == textarea.selectionStart) { console.log('hi') } else {
+      let cursorPosition = textarea.selectionStart;
+      textarea.selectionStart = cursorPosition - 1;
+      textarea.selectionEnd = textarea.selectionStart;
+    } break;
+    case 'key':
+      textarea.selectionStart = textarea.value.length;
+      textarea.selectionEnd = textarea.selectionStart;
+      break;
+  }
+
 }
+*/
 
 // Click Handler
 
 keyboard.addEventListener('click', (event) => {
-
   let key = event.target.closest('button');
   if (!key) return;
   if (!key.classList.contains('control')) {
@@ -153,23 +173,29 @@ keyboard.addEventListener('click', (event) => {
 //
 
 function handleControl(key) {
-
   // Handle CapsLock
   if (key.classList.contains('CapsLock')) {
     document.querySelectorAll('.letter').forEach((el) => {
       el.classList.toggle('capslock-on');
     })
+    status.capslock = !(status.capslock);
+    highlightCapslock();
+  }
+
+  // Handle Shift
+  if (key.classList.contains('Shift')) {
+    status.shift = !(status.shift);
   }
 
   // Handle Backspace
   if (key.classList.contains('Backspace')) {
-    //textarea.focus();
     if (textarea.selectionStart == textarea.selectionEnd) {
       textarea.value = textarea.value.substring(0, textarea.selectionStart - 1) + textarea.value.substring(textarea.selectionStart, textarea.value.length);
     }
-    else
-
-    handleCursor();
+    else {
+      textarea.value = textarea.value.substring(0, textarea.selectionStart) + textarea.value.substring(textarea.selectionEnd, textarea.value.length);
+    }
+    //  handleCursor('click');
   }
 
   // Handle Space
@@ -181,25 +207,68 @@ function handleControl(key) {
   if (key.classList.contains('Tab')) {
     textarea.value += '  ';
   }
+
+  // Handle Arrow Left
+  if (key.classList.contains('ArrowLeft')) {
+    textarea.selectionStart--;
+    textarea.selectionEnd--;
+  }
+
+  // Handle Arrow Right
+  if (key.classList.contains('ArrowRight')) {
+    textarea.selectionStart++;
+  }
 }
 
-
 // KeyDown Handler
-
+let pressed = new Set();
 document.addEventListener('keydown', (event) => {
-  //if (event.shiftKey )
-  textarea.innerHTML += event.key;
-  // console.log(event.code);
-  highlight(event.code);
+  if (document.querySelector(`.${event.code}`) != null) {
+
+    let key = document.querySelector(`.${event.code}`);
+
+    pressed.add(event.code);
+    if (pressed.has('ShiftRight') || pressed.has('ShiftLeft')) {
+      status.shift = true;
+    }
+
+    if (!key.classList.contains('control')) {
+      if (status.capslock) {
+        if (status.shift) { textarea.value += key.innerHTML; }
+        if (!status.shift) { textarea.value += key.innerHTML.toUpperCase(); }
+      } else {
+        if (!status.capslock) {
+          if (status.shift) { textarea.value += key.innerHTML.toUpperCase(); }
+          if (!status.shift) { textarea.value += key.innerHTML; }
+        }
+      }
+    }
+
+    else { handleControl(key) }
+
+
+    highlight(event.code);
+
+  }
 });
 
 // KeyUp Handler
 
 document.addEventListener('keyup', (event) => {
-  //if (event.shiftKey )
-  highlight(event.code);
+  if (document.querySelector(`.${event.code}`) != null) {
+    highlight(event.code);
+    if(event.code=='ShiftLeft'||event.code=='ShiftRight'){
+      status.shift=false;
+    }
+    pressed.delete(event.code);
+    
+  }
 });
 
 function highlight(code) {
   document.querySelector(`.${code}`).classList.toggle('highlighted');
+};
+
+function highlightCapslock() {
+  document.querySelector('.CapsLock').classList.toggle('capslock_highlighted');
 }

@@ -17,12 +17,23 @@
 }
 
 .keyboard {
+  padding: 8px 5px;
   display: flex;
   flex-direction: column;
 
   text-transform: uppercase;
  
   background-color: #102338;
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.row:last-child {
+  margin-bottom: 0;
 }
 
 .button {
@@ -35,6 +46,8 @@
    margin: 2px;
 
    border: 1px solid #089FFF;
+   border-radius: 4px;
+
    transition: 0.4s;
    
 }
@@ -43,12 +56,37 @@
   background-color: rgba(187, 198, 233, 0.726);
 }
 
+.button:active {  
+  transform: translateY(4px);
+}
+
 .capslock-on {
   text-transform: uppercase;
 }
 
-
-
 .button.highlighted {
-  border: 1px solid red;
+  transform: translateY(4px);
+}
+
+.Backspace, 
+.Tab,
+.Backslash,
+.CapsLock,
+.Enter,
+.ShiftLeft
+   {
+  flex-basis: 100%;
+}
+
+.Space {
+  flex-basis: 200%;
+}
+
+.capslock_highlighted {
+  background-color: #089FFF;  
+}
+
+.info {
+  padding-top: 20px;
+  text-align: center;
 }

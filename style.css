@@ -10,10 +10,10 @@
 }
 
 .textarea {
+  width: 100%;
   margin-bottom: 15px;
 
   resize: none;
-  width: 100%;
 }
 
 .keyboard {
@@ -22,7 +22,7 @@
   flex-direction: column;
 
   text-transform: uppercase;
- 
+
   background-color: #102338;
   border-radius: 5px;
 }
@@ -37,26 +37,27 @@
 }
 
 .button {
-  color: white;
   min-width: 40px;
   height: 40px;
+  margin: 2px;
+
+  color: white;
   background-color: rgba(255, 255, 255, 0.075);
-   cursor: pointer;
-   border: none;
-   margin: 2px;
 
-   border: 1px solid #089FFF;
-   border-radius: 4px;
+  border: none;
+  border: 1px solid #089FFF;
+  border-radius: 4px;
 
-   transition: 0.4s;
-   
+  cursor: pointer;
+
+  transition: 0.4s;
 }
 
 .button:hover {
   background-color: rgba(187, 198, 233, 0.726);
 }
 
-.button:active {  
+.button:active {
   transform: translateY(4px);
 }
 
@@ -64,17 +65,17 @@
   text-transform: uppercase;
 }
 
-.button.pressed {
+.button.highlighted {
   transform: translateY(4px);
+  background-color: #089FFF;
 }
 
-.Backspace, 
+.Backspace,
 .Tab,
 .Backslash,
 .CapsLock,
 .Enter,
-.ShiftLeft
-   {
+.ShiftLeft {
   flex-basis: 100%;
 }
 
@@ -83,7 +84,7 @@
 }
 
 .capslock_highlighted {
-  background-color: #089FFF;  
+  background-color: #089FFF;
 }
 
 .info {

@@ -1,6 +1,6 @@
 const row_one_additional = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', ''];
-
-const row_one = [{ key: '`', name: 'Backquote', type: 'control' },
+// Row #1 on the keyboard
+const row_one = [{ keyEng: '`', keyRus: 'ё', name: 'Backquote', type: 'q' },
 { key: '1', name: 'Digit1', type: 'digit' },
 { key: '2', name: 'Digit2', type: 'letter' },
 { key: '3', name: 'Digit3', type: 'letter' },
@@ -15,67 +15,78 @@ const row_one = [{ key: '`', name: 'Backquote', type: 'control' },
 { key: '=', name: 'Equal', type: 'letter' },
 { key: 'Backspace', name: 'Backspace', type: 'control' }
 ];
-
+// Row #2 on the keyboard
 const row_two = [{ key: 'Tab', name: 'Tab', type: 'control' },
-{ key: 'q', name: 'KeyQ', type: 'letter' },
-{ key: 'w', name: 'KeyW', type: 'letter' },
-{ key: 'e', name: 'KeyE', type: 'letter' },
-{ key: 'r', name: 'KeyR', type: 'letter' },
-{ key: 't', name: 'KeyT', type: 'letter' },
-{ key: 'y', name: 'KeyY', type: 'letter' },
-{ key: 'u', name: 'KeyU', type: 'letter' },
-{ key: 'i', name: 'KeyI', type: 'letter' },
-{ key: 'o', name: 'KeyO', type: 'letter' },
-{ key: 'p', name: 'KeyP', type: 'letter' },
-{ key: '[', name: 'BracketLeft', type: 'letter' },
-{ key: ']', name: 'BracketRight', type: 'letter' },
-{ key: '\\', name: 'Backslash', type: 'letter' }
+{ keyEng: 'q', keyRus: 'й', name: 'KeyQ', type: 'letter' },
+{ keyEng: 'w', keyRus: 'ц', name: 'KeyW', type: 'letter' },
+{ keyEng: 'e', keyRus: 'у', name: 'KeyE', type: 'letter' },
+{ keyEng: 'r', keyRus: 'к', name: 'KeyR', type: 'letter' },
+{ keyEng: 't', keyRus: 'е', name: 'KeyT', type: 'letter' },
+{ keyEng: 'y', keyRus: 'н', name: 'KeyY', type: 'letter' },
+{ keyEng: 'u', keyRus: 'г', name: 'KeyU', type: 'letter' },
+{ keyEng: 'i', keyRus: 'ш', name: 'KeyI', type: 'letter' },
+{ keyEng: 'o', keyRus: 'щ', name: 'KeyO', type: 'letter' },
+{ keyEng: 'p', keyRus: 'з', name: 'KeyP', type: 'letter' },
+{ keyEng: '[', keyRus: 'х', name: 'BracketLeft', type: 'letter' },
+{ keyEng: ']', keyRus: 'ъ', name: 'BracketRight', type: 'letter' },
+{ key: '\\', name: 'Backslash', type: 'symbol' }
 ];
-
+// Row #3 on the keyboard
 const row_three =
   [{ key: 'CapsLock', name: 'CapsLock', type: 'control' },
-  { key: 'a', name: 'KeyA', type: 'letter' },
-  { key: 's', name: 'KeyS', type: 'letter' },
-  { key: 'd', name: 'KeyD', type: 'letter' },
-  { key: 'f', name: 'KeyF', type: 'letter' },
-  { key: 'g', name: 'KeyG', type: 'letter' },
-  { key: 'h', name: 'KeyH', type: 'letter' },
-  { key: 'j', name: 'KeyJ', type: 'letter' },
-  { key: 'k', name: 'KeyK', type: 'letter' },
-  { key: 'l', name: 'KeyL', type: 'letter' },
-  { key: ';', name: 'Semicolon', type: 'letter' },
-  { key: '\'', name: 'Quote', type: 'letter' },
+  { keyEng: 'a', keyRus: 'ф', name: 'KeyA', type: 'letter' },
+  { keyEng: 's', keyRus: 'ы', name: 'KeyS', type: 'letter' },
+  { keyEng: 'd', keyRus: 'в', name: 'KeyD', type: 'letter' },
+  { keyEng: 'f', keyRus: 'а', name: 'KeyF', type: 'letter' },
+  { keyEng: 'g', keyRus: 'п', name: 'KeyG', type: 'letter' },
+  { keyEng: 'h', keyRus: 'р', name: 'KeyH', type: 'letter' },
+  { keyEng: 'j', keyRus: 'о', name: 'KeyJ', type: 'letter' },
+  { keyEng: 'k', keyRus: 'л', name: 'KeyK', type: 'letter' },
+  { keyEng: 'l', keyRus: 'д', name: 'KeyL', type: 'letter' },
+  { keyEng: ';', keyRus: 'ж', name: 'Semicolon', type: 'letter' },
+  { keyEng: '\'', keyRus: 'э', name: 'Quote', type: 'letter' },
   { key: 'Enter', name: 'Enter', type: 'control' }
   ];
-
+// Row #4 on the keyboard
 const row_four =
   [{ key: 'Shift', name: 'ShiftLeft', type: 'control' },
-  { key: 'z', name: 'KeyZ', type: 'letter' },
-  { key: 'x', name: 'KeyX', type: 'letter' },
-  { key: 'c', name: 'KeyC', type: 'letter' },
-  { key: 'v', name: 'KeyV', type: 'letter' },
-  { key: 'b', name: 'KeyB', type: 'letter' },
-  { key: 'n', name: 'KeyN', type: 'letter' },
-  { key: 'm', name: 'KeyM', type: 'letter' },
-  { key: ',', name: 'Comma', type: 'letter' },
-  { key: '.', name: 'Period', type: 'letter' },
-  { key: '/', name: 'Slash', type: 'letter' },
+  { keyEng: 'z', keyRus: 'я', name: 'KeyZ', type: 'letter' },
+  { keyEng: 'x', keyRus: 'ч', name: 'KeyX', type: 'letter' },
+  { keyEng: 'c', keyRus: 'с', name: 'KeyC', type: 'letter' },
+  { keyEng: 'v', keyRus: 'м', name: 'KeyV', type: 'letter' },
+  { keyEng: 'b', keyRus: 'и', name: 'KeyB', type: 'letter' },
+  { keyEng: 'n', keyRus: 'т', name: 'KeyN', type: 'letter' },
+  { keyEng: 'm', keyRus: 'ь', name: 'KeyM', type: 'letter' },
+  { keyEng: ',', keyRus: 'б', name: 'Comma', type: 'letter' },
+  { keyEng: '.', keyRus: 'ю', name: 'Period', type: 'letter' },
+  { keyEng: '/', keyRus: '.', name: 'Slash', type: 'letter' },
   { key: '&#9650;', name: 'ArrowUp', type: 'control' },
   { key: 'Shift', name: 'ShiftRight', type: 'control' }
   ];
-
-const row_five = [{ key: 'Ctrl', name: 'ControlLeft', type: 'control' },
-{ key: 'Win', name: 'MetaLeft', type: 'control' },
-{ key: 'Alt', name: 'AltLeft', type: 'control' },
-{ key: '', name: 'Space', type: 'control' },
-{ key: 'Alt', name: 'AltRight', type: 'control' },
-{ key: 'Ctrl', name: 'ControlRight', type: 'control' },
-{ key: '&#9668;', name: 'ArrowLeft', type: 'control' },
-{ key: '&#9660;', name: 'ArrowDown', type: 'control' },
-{ key: '&#9658;', name: 'ArrowRight', type: 'control' },
+// Row #5 on the keyboard
+const row_five = [
+  //{ key: 'Ctrl', name: 'ControlLeft', type: 'control' },
+  { key: 'Ctrl', name: 'w', type: 'control' },
+  { key: 'Win', name: 'MetaLeft', type: 'control' },
+  { key: 'Alt', name: 'AltLeft', type: 'control' },
+  { key: '', name: 'Space', type: 'control' },
+  { key: 'Alt', name: 'AltRight', type: 'control' },
+  { key: 'Ctrl', name: 'ControlRight', type: 'control' },
+  { key: '&#9668;', name: 'ArrowLeft', type: 'control' },
+  { key: '&#9660;', name: 'ArrowDown', type: 'control' },
+  { key: '&#9658;', name: 'ArrowRight', type: 'control' },
 ];
-
+// Status for keys:  true - turned on/pressed  false - turned off/not pressed
 const status = { capslock: false, shift: false };
+// Language
+const lang = { eng: true, rus: false };
+// Array for all keys
+const keys = [];
+keys.push(row_one);
+keys.push(row_two);
+keys.push(row_three);
+keys.push(row_four);
+keys.push(row_five);
 
 // Create Container
 const container = document.createElement('div');
@@ -99,44 +110,73 @@ textarea.onkeydown = () => false;
 //document.addEventListener('keydown', (evt) => {
 // evt.preventDefault();
 //});
-//textarea.onblur = function () {
-//textarea.focus();
-//}
+textarea.onblur = function () {
+textarea.focus();
+}
 
 // Create Keyboard
 const keyboard = document.createElement('div');
 keyboard.className = 'keyboard';
 container.append(keyboard);
+createKeyboard();
 
 // Build Rows 
-function buildRow(row, n) {
+function buildRow(row) {
   let rowDiv = document.createElement('div');
   rowDiv.className = 'row';
   document.body.append(rowDiv);
   for (i = 0; i < row.length; i++) {
-    let key = document.createElement('button');
-    key.className = 'button';
-    key.classList.add(`${row[i].name}`);
-    key.classList.add(`${row[i].type}`);
-    key.innerHTML = row[i].key;
-    key.setAttribute('type', 'button');
-    rowDiv.append(key);
+    let keyBtn = document.createElement('button');
+    keyBtn.className = 'button';
+    keyBtn.classList.add(`${row[i].name}`);
+    keyBtn.classList.add(`${row[i].type}`);
+    if (row[i].hasOwnProperty('keyEng')) {
+      keyBtn.innerHTML = row[i].keyEng;
+    }
+    else
+      keyBtn.innerHTML = row[i].key;
+    keyBtn.setAttribute('type', 'button');
+    rowDiv.append(keyBtn);
   }
   keyboard.append(rowDiv);
+  console.log('hi');
 }
 
-buildRow(row_one, 1);
-buildRow(row_two, 2);
-buildRow(row_three, 3);
-buildRow(row_four, 4);
-buildRow(row_five, 5);
+// Build Keyboard
+function createKeyboard() {
+  for (let i = 0; i < keys.length; i++) {
+    buildRow(keys[i]);
+  }
+}
 
-// Create Keyboard
+// Put information about OS and language change
 const info = document.createElement('div');
 info.className = 'info';
 container.append(info);
-info.innerHTML='Windows 10';
+info.innerHTML = '<p>OS: Windows 10</p><p>Change language: ShiftLeft + AltLeft</p>';
 
+// Change Language
+function changeLanguage() {
+  lang.eng = !lang.eng;
+  lang.rus = !lang.rus;
+  for (let i = 0; i < keys.length; i++) {
+    if (lang.rus) {
+      for (el of keys[i]) {
+        if (el.hasOwnProperty('keyRus')) {
+          document.querySelector(`.${el.name}`).innerHTML = el.keyRus;
+        }
+      }
+    }
+    else
+      if (lang.eng) {
+        for (el of keys[i]) {
+          if (el.hasOwnProperty('keyEng')) {
+            document.querySelector(`.${el.name}`).innerHTML = el.keyEng;
+          }
+        }
+      }
+  }
+}
 // Cursor Handler
 
 /*function handleCursor(event) {
@@ -156,7 +196,6 @@ info.innerHTML='Windows 10';
 */
 
 // Click Handler
-
 keyboard.addEventListener('click', (event) => {
   let key = event.target.closest('button');
   if (!key) return;
@@ -170,8 +209,7 @@ keyboard.addEventListener('click', (event) => {
   else { handleControl(key) }
 });
 
-//
-
+// Handle control keys
 function handleControl(key) {
   // Handle CapsLock
   if (key.classList.contains('CapsLock')) {
@@ -221,17 +259,15 @@ function handleControl(key) {
 }
 
 // KeyDown Handler
-let pressed = new Set();
+let pressed = new Set();  // contains pressed keys
 document.addEventListener('keydown', (event) => {
   if (document.querySelector(`.${event.code}`) != null) {
-
     let key = document.querySelector(`.${event.code}`);
-
     pressed.add(event.code);
     if (pressed.has('ShiftRight') || pressed.has('ShiftLeft')) {
       status.shift = true;
     }
-
+    // handle letters, digits and symbols
     if (!key.classList.contains('control')) {
       if (status.capslock) {
         if (status.shift) { textarea.value += key.innerHTML; }
@@ -243,30 +279,33 @@ document.addEventListener('keydown', (event) => {
         }
       }
     }
-
-    else { handleControl(key) }
-
-
-    highlight(event.code);
-
+    // handle control keys
+    else {
+      // change language
+      if (pressed.has('ShiftLeft') && pressed.has('AltLeft')) {
+        changeLanguage();
+      }
+      else
+        handleControl(key);
+    }
+    press(event.code);
   }
 });
 
 // KeyUp Handler
-
 document.addEventListener('keyup', (event) => {
   if (document.querySelector(`.${event.code}`) != null) {
-    highlight(event.code);
-    if(event.code=='ShiftLeft'||event.code=='ShiftRight'){
-      status.shift=false;
+    press(event.code);
+    if (event.code == 'ShiftLeft' || event.code == 'ShiftRight') {
+      status.shift = false;
     }
     pressed.delete(event.code);
-    
+
   }
 });
 
-function highlight(code) {
-  document.querySelector(`.${code}`).classList.toggle('highlighted');
+function press(code) {
+  document.querySelector(`.${code}`).classList.toggle('pressed');
 };
 
 function highlightCapslock() {

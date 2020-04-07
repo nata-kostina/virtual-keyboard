@@ -64,7 +64,7 @@
   text-transform: uppercase;
 }
 
-.button.highlighted {
+.button.pressed {
   transform: translateY(4px);
 }
 

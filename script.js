@@ -222,7 +222,7 @@ info.innerHTML = '<p>OS: Windows 10</p><p>Switch language: ShiftLeft + AltLeft</
 // Change Language
 function changeLanguage() {
   myLang = myLang === 'eng' ? 'ru' : 'eng';
-  localStorage.setItem('lang', myLang); 
+  localStorage.setItem('lang', myLang);
   for (let i = 0; i < keys.length; i += 1) {
     if (localStorage.getItem('lang') === 'ru') {
       for (const el of keys[i]) {
@@ -319,7 +319,7 @@ function handleControl(key) {
   }
 
   // Handle Arrow Up
-  if (key.classList.contains('ArrowDown')) {
+  if (key.classList.contains('ArrowUp')) {
   }
 }
 
@@ -353,13 +353,14 @@ document.addEventListener('keydown', (event) => {
     }
     // handle letters, digits and symbols
     if (!key.classList.contains('control')) {
-      if (status.capslock) {
-        if (status.shift) { textarea.value += key.innerHTML; }
-        if (!status.shift) { textarea.value += key.innerHTML.toUpperCase(); }
-      } else if (!status.capslock) {
-        if (status.shift) { textarea.value += key.innerHTML.toUpperCase(); }
-        if (!status.shift) { textarea.value += key.innerHTML; }
+      if ((status.capslock && status.shift) || (!status.capslock && !status.shift)) {
+        textarea.value += key.innerHTML; // type in lower case
       }
+      else
+        if (status.capslock || status.shift) {
+          textarea.value += key.innerHTML.toUpperCase(); // type in upper case
+        }
+
     }
     // handle control keys
     else {

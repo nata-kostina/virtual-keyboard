@@ -143,9 +143,8 @@ const rowFive = [
 // Status for keys:  true - turned on/pressed, false - turned off/not pressed
 const status = { capslock: false, shift: false };
 // Language
-const lang = {};
-lang.eng = localStorage.eng || 'true';
-lang.rus = localStorage.rus || 'false';
+//localStorage.clear();
+let myLang = localStorage.getItem('lang') || 'eng';
 // Array for all keys
 const keys = [];
 keys.push(rowOne);
@@ -188,14 +187,14 @@ function buildRow(row) {
     keyBtn.classList.add(`${row[i].name}`);
     keyBtn.classList.add(`${row[i].type}`);
     // if language is English
-    if (lang.eng === 'true') {
+    if (myLang === 'eng') {
       if (row[i].hasOwnProperty('keyEng')) {
         keyBtn.innerHTML = row[i].keyEng;
       } else { keyBtn.innerHTML = row[i].key; }
     }
     // if language is Russian
     else
-      if (lang.rus === 'true') {
+      if (myLang === 'ru') {
         if (row[i].hasOwnProperty('keyRus')) {
           keyBtn.innerHTML = row[i].keyRus;
         } else { keyBtn.innerHTML = row[i].key; }
@@ -222,20 +221,17 @@ info.innerHTML = '<p>OS: Windows 10</p><p>Switch language: ShiftLeft + AltLeft</
 
 // Change Language
 function changeLanguage() {
-  const temp = lang.eng;
-  lang.eng = lang.rus;
-  lang.rus = temp;
-  localStorage.eng = lang.eng.toString();
-  localStorage.rus = lang.rus.toString();
+  myLang = myLang === 'eng' ? 'ru' : 'eng';
+  localStorage.setItem('lang', myLang); 
   for (let i = 0; i < keys.length; i += 1) {
-    if (localStorage.getItem('rus') === 'true') {
+    if (localStorage.getItem('lang') === 'ru') {
       for (const el of keys[i]) {
         if (el.hasOwnProperty('keyRus')) {
           document.querySelector(`.${el.name}`).innerHTML = el.keyRus;
         }
       }
     } else
-      if (localStorage.getItem('eng') === 'true') {
+      if (localStorage.getItem('lang') === 'eng') {
         for (const el of keys[i]) {
           if (el.hasOwnProperty('keyEng')) {
             document.querySelector(`.${el.name}`).innerHTML = el.keyEng;

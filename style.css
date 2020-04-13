@@ -16,6 +16,10 @@
   resize: none;
 }
 
+.textarea:focus {
+  outline: none !important;
+}
+
 .keyboard {
   padding: 8px 5px;
   display: flex;
@@ -88,6 +92,8 @@
 }
 
 .info {
-  padding-top: 20px;
+  padding: 20px 0;
+
   text-align: center;
+  line-height: 5px;
 }
